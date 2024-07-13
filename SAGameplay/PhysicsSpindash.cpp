@@ -164,7 +164,7 @@ namespace Gameplay_Spindash
 	// Helper funcs
 	inline bool RollOnCrouch(CPlayerSpeedContext* const context)
 	{
-		if (!(*Input::pressedButtons & Input::Buttons::Crouch)) return false;
+		if (context->StateFlag(eStateFlag_OutOfControl) || !(*Input::pressedButtons & Input::Buttons::Crouch)) return false;
 
 		// whenever we crouch, we want to keep our velocity and aim in the direction we're going.
 		// In the future, we want to 

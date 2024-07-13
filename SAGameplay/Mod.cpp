@@ -104,10 +104,10 @@ EXPORT void Init(ModInfo* modInfo)
     JumpBall::Init();
     ProceduralAnimation::Init();
 
-    Cameras::Init();
+    //Cameras::Init();
 
-    SetObjectMods::Init();
-    SetObjectsCustom::Init();
+    //SetObjectMods::Init();
+    //SetObjectsCustom::Init();
 
     // Fix graphical hiccups.
     INSTALL_HOOK(_CRenderingDeviceSetViewMatrix)
