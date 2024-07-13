@@ -2140,8 +2140,8 @@ namespace Gameplay_Adventure::Extras
 		if (hasNoTarget)
 		{
 			const float homingAttackDecelMultiplier =
-			                                          0.89999999999f; // SA1
-		//	                                          0.98f;          // SA2
+		//	                                          0.89999999999f; // SA1
+			                                          0.98f;          // SA2
 
 			const CVector horizontalVelocity = sonic->GetHorizontalVelocity();
 			const float speed = horizontalVelocity.norm();
@@ -2403,8 +2403,8 @@ namespace Gameplay_Adventure::Extras
 		static uint32_t returnAddress = 0x0122EBBB;
 		static uint32_t func = 0x0053A9F0;
 
-		//static float homingTime = 16.0f / SA1Parameters::TargetFramerate; // SA2
-		static float homingTime = 7.0f / SA1Parameters::TargetFramerate; // SA1
+		static float homingTime = 16.0f / SA1Parameters::TargetFramerate; // SA2
+		//static float homingTime = 7.0f / SA1Parameters::TargetFramerate; // SA1
 
 		__asm
 		{
