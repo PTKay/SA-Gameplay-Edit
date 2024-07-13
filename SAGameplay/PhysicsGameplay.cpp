@@ -2855,8 +2855,8 @@ namespace Gameplay_Adventure::Extras
 		//INSTALL_HOOK(_ProcMsgFallDeadHitCollision)
 
 		// Patch out skydive messages
-		WRITE_CALL(0x00DEB43A, ClassicDiveStartPatch)
-		WRITE_CALL(0x00DEB460, StubMsgFunction)
+		// WRITE_CALL(0x00DEB43A, ClassicDiveStartPatch)
+		// WRITE_CALL(0x00DEB460, StubMsgFunction)
 
 		INSTALL_HOOK(_ClassicHomingAttackBegin)
 		INSTALL_HOOK(_ClassicHomingAttackUpdate)
@@ -2873,7 +2873,7 @@ namespace Gameplay_Adventure::Extras
 
 		INSTALL_HOOK(_ProcMsgSpringImpulseM)
 		INSTALL_HOOK(_ProcMsgSpringImpulseC)
-		INSTALL_HOOK(_ProcMsgWideSpringImpulse)
+		//INSTALL_HOOK(_ProcMsgWideSpringImpulse)
 		//INSTALL_HOOK(_StateShoesSlidingStart)
 
 		// DEBUG: overriding the jumpdash time w/o param editing just for iteration's sake.
