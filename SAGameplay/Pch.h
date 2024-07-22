@@ -6,6 +6,7 @@
 
 #ifndef NO_BLUEBLUR
 //#define NO_BLUEBLUR
+#define BB_EXCLUDE_MATH_DEFINITIONS
 #include <BlueBlur.h>
 #endif
 

@@ -41,11 +41,14 @@ namespace Hedgehog::Math
             *this = affine;
         }
 
+        float* GetRowColumn(int row, int column) const;
+        static float* GetRowColumn(CMatrix* This, int row, int column);
+        float GetFloat(int row, int column) const;
         static void CreateFromAxis(CMatrix* This, CVector* xAxis, CVector* yAxis, CVector* zAxis);
 
         static CMatrix CreateFromAxis(const CVector& xAxis, const CVector& yAxis, const CVector& zAxis);
 
-        static CMatrix* Transpose(void* This, void* Result);
+        static CMatrix* Transpose(CMatrix* This, CMatrix* Result);
 
         CVector GetVectorFromRow(int row) const;
 
@@ -70,6 +73,13 @@ namespace Hedgehog::Math
             *This = other;
         }
 
+        // Allow multiplication with Mat3's
+        CMatrix44 operator*(const CMatrix& other) const
+        {
+            return *(Eigen::Matrix4f*)this * *(Eigen::Matrix4f*)&other;
+        }
+
+        float* GetRowColumn(int row, int column) const;
         static void CreateFromAxis(CMatrix44* This, const CVector* xAxis, const CVector* yAxis, const CVector* zAxis);
 
         static CMatrix44 CreateFromAxis(const CVector& xAxis, const CVector& yAxis, const CVector& zAxis);
@@ -78,7 +88,7 @@ namespace Hedgehog::Math
 
         void SetFromAxis(CVector* xAxis, CVector* yAxis, CVector* zAxis);
 
-        float GetFloatFromMatrix(int row, int column);
+        float GetFloatFromMatrix(int row, int column) const;
 
         CVector GetVectorFromRow(int row) const;
 

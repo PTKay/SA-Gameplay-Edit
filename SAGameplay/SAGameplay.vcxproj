@@ -103,7 +103,7 @@
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,6 +149,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -211,15 +212,19 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="PostureDiving.cpp" />
     <ClCompile Include="SetEditor.cpp" />
     <ClCompile Include="SetObjectMods.cpp" />
     <ClCompile Include="ProceduralAnimation.cpp" />
     <ClCompile Include="SetObjectsCustom.cpp" />
+    <ClCompile Include="SkyDiving.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\stdExtensions.h" />
+    <ClInclude Include="SkyDiving.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="include\MathUtil.h" />
     <ClInclude Include="PhysicsGameplay.h" />
     <ClInclude Include="Cameras.h" />
     <ClInclude Include="Extra\BlueBlurExtensions.h" />
@@ -242,6 +247,7 @@
     <ClInclude Include="Paths.h" />
     <ClInclude Include="Pch.h" />
     <ClInclude Include="Collisions.h" />
+    <ClInclude Include="PostureDiving.h" />
     <ClInclude Include="SetEditor.h" />
     <ClInclude Include="SetObjectMods.h" />
     <ClInclude Include="ProceduralAnimation.h" />

@@ -4,7 +4,7 @@ namespace Hedgehog::Math
 	class CVector : public Eigen::AlignedVector3<float>
 	{
 	public:
-		using AlignedVector3<float>::AlignedVector3;
+		using Eigen::AlignedVector3<float>::AlignedVector3;
 
 		static CVector One();
 		static CVector Right();

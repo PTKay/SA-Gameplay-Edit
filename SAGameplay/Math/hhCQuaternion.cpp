@@ -1,3 +1,7 @@
+#include "hhCQuaternion.h"
+
+#include <corecrt_math_defines.h>
+
 #include "hhCVector.h"
 #include "hhCVector4.h"
 #include "hhCMatrix.h"
@@ -12,32 +16,29 @@ namespace Hedgehog::Math
 		return *(CQuaternion*)&This;
 	}
 
-	CQuaternion CQuaternion::FromAxes(const CVector& a1, const CVector& a2, const CVector& a3)
+	CQuaternion CQuaternion::FromAxes(const CVector& in_rXAxis, const CVector& in_rYAxis, const CVector& in_rZAxis)
 	{
-		CQuaternion This = CQuaternion::Identity();
+		// Location: 0x006F1950
+		CQuaternion result = Identity();
 
-		const CVector AxisX = a1.normalizedSafe();
-		const CVector AxisY = a2.normalizedSafe();
+		const CVector AxisX = in_rXAxis.normalizedSafe();
+		const CVector AxisY = in_rYAxis.normalizedSafe();
 		CVector AxisZ = CVector::Cross(AxisX, AxisY);
 		const float axisZ_length = (float)AxisZ.Length();
 
 		AxisZ = AxisZ.normalizedSafe();
 		if (fabs(axisZ_length) < 0.000199999994947575)
-			AxisZ = a3.normalizedSafe();
+			AxisZ = in_rZAxis.normalizedSafe();
 
 		const float dot = std::clamp((float)CVector::Dot(AxisX, AxisY), -1.0f, 1.0f);
 		const double halfDot = dot * 0.5;
 		const float axisScale = sqrtf(0.5 - halfDot);
 
-		This.x() = AxisZ.x() * axisScale;
-		This.y() = AxisZ.y() * axisScale;
-		This.z() = AxisZ.z() * axisScale;
-		This.w() = sqrtf(0.5 + halfDot);
-		return This;
-
-		//BB_FUNCTION_PTR(CQuaternion*, __cdecl, func, 0x006F1950, CQuaternion* _This, const CVector& A1, const CVector& A2, const CVector& A3);
-		//func(&This, a1, a2, a3);
-		//return This;
+		result.x() = AxisZ.x() * axisScale;
+		result.y() = AxisZ.y() * axisScale;
+		result.z() = AxisZ.z() * axisScale;
+		result.w() = sqrtf(0.5 + halfDot);
+		return result;
 	}
 
 	CQuaternion* CQuaternion::FromAxes(CQuaternion* out, CVector* axisX, CVector* axisY, CVector* axisZ)
@@ -94,10 +95,11 @@ namespace Hedgehog::Math
 
 	CMatrix44 CQuaternion::ToRotationMatrix() const
 	{
-		CMatrix44 matrix = CMatrix44::Identity();
-		BB_FUNCTION_PTR(void*, __cdecl, func, 0x009BEF20, const CMatrix44 & mat, const CQuaternion * quat);
-		func(matrix, this);
-		return matrix;
+		Eigen::Matrix<float, 3, 3, 0> rotmatrix = toRotationMatrix();
+		float* f = (float*)&rotmatrix;
+
+
+		return CMatrix44::CreateFromAxis(CVector(f[0], f[1], f[2]), CVector(f[3], f[4], f[5]), CVector(f[6], f[7], f[8]));;
 	}
 
 	float CQuaternion::Angle(const CQuaternion& a, const CQuaternion& b)

@@ -216,7 +216,7 @@ namespace Hedgehog::Math
 		CMatrix44 ToRotationMatrix() const;
 
 		// These are used in Generations as far as I know.
-		static CQuaternion FromAxes(const CVector& a1, const CVector& a2, const CVector& a3);
+		static CQuaternion FromAxes(const CVector& in_rXAxis, const CVector& in_rYAxis, const CVector& in_rZAxis);
 		static CQuaternion* FromAxes(CQuaternion* out, CVector* axisX, CVector* axisY, CVector* axisZ);
 	};
 }

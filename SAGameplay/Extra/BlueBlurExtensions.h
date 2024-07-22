@@ -107,6 +107,67 @@ namespace Sonic::Player
 			return result;
 		}
 	};
+
+	class IPosture : public Hedgehog::Universe::TStateMachine<CPlayerContext>::TState
+	{
+	public:
+		Hedgehog::Base::CSharedString m_ClassName;
+
+		IPosture(const bb_null_ctor& nil) : Hedgehog::Universe::TStateMachine<CPlayerContext>::TState(nil) {}
+		IPosture(const Hedgehog::Base::CSharedString& name) : m_ClassName(name) {}
+
+		CPlayerSpeedContext* GetContext() const
+		{
+			return static_cast<CPlayerSpeedContext*>(m_pContext);
+		}
+	};
+
+	class CPlayerSpeedPostureCommon : public IPosture
+	{
+		static constexpr int _vtbl = 0x016D3B6C;
+	public:
+		float m_Unk1 = 0.0f;
+		float m_Unk2 = 0.0f;
+		float m_Unk3 = 0.0f;
+		Hedgehog::Math::CVector m_Vector = Hedgehog::Math::CVector(0, 0, 0);
+
+		CPlayerSpeedPostureCommon(const bb_null_ctor& nil) : IPosture(nil) {}
+
+		CPlayerSpeedPostureCommon() : IPosture("CPlayerSpeedPostureCommon")
+		{
+			*reinterpret_cast<int*>(this) = _vtbl;
+		}
+
+		CPlayerSpeedPostureCommon(const Hedgehog::Base::CSharedString& name) : IPosture(name)
+		{
+			*reinterpret_cast<int*>(this) = _vtbl;
+		}
+
+		virtual void ChangeVelocity(Hedgehog::Math::CVector* in_pVelocity) {}
+	};
+
+	class CPlayerSpeedPosture3DCommon : public CPlayerSpeedPostureCommon
+	{
+		static constexpr int _vtbl = 0x016D392C;
+	public:
+		CPlayerSpeedPosture3DCommon(const bb_null_ctor& nil) : CPlayerSpeedPostureCommon(nil) {}
+
+		CPlayerSpeedPosture3DCommon() : CPlayerSpeedPostureCommon("CPlayerSpeedPosture3DCommon")
+		{
+			*reinterpret_cast<int*>(this) = _vtbl;
+		}
+
+		CPlayerSpeedPosture3DCommon(const Hedgehog::Base::CSharedString& name) : CPlayerSpeedPostureCommon(name)
+		{
+			*reinterpret_cast<int*>(this) = _vtbl;
+		}
+
+		void UpdateState() override
+		{
+			BB_FUNCTION_PTR(void, __thiscall, func, 0x00E37FD0, void* This);
+			func(this);
+		}
+	};
 }
 
 namespace Sonic

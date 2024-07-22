@@ -7,6 +7,7 @@
 
 #include "JumpBall.h"
 #include "Cameras.h"
+#include "SkyDiving.h"
 #include "PhysicsSpindash.h"
 #include "ProceduralAnimation.h"
 #include "Config.h"
@@ -103,6 +104,7 @@ EXPORT void Init(ModInfo* modInfo)
     Common::Init();
     JumpBall::Init();
     ProceduralAnimation::Init();
+    SkyDiving::Init();
 
     //Cameras::Init();
 

@@ -61,6 +61,12 @@
     <ClCompile Include="SetObjectsCustom.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="PostureDiving.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyDiving.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pch.h" />
@@ -149,6 +155,15 @@
       <Filter>Private</Filter>
     </ClInclude>
     <ClInclude Include="..\Include\stdExtensions.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="PostureDiving.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyDiving.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MathUtil.h">
       <Filter>Private</Filter>
     </ClInclude>
   </ItemGroup>
