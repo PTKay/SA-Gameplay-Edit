@@ -273,36 +273,13 @@ void Sonic::Player::CSonicClassicPostureDiving::UpdateState()
 	float fuckidk = v35 * DivingRotationMax;
 	DiveFuncSetSomeDeltatimeThing(&m_Field068, this, &m_Field070, fuckidk);
 
-	if (divingFloat)
-	{
-		scalarc = -m_Field068 * 0.01745329238474369;
-		pContext->m_VerticalRotation = CQuaternion::FromAngleAxis(scalarc, pContext->GetRightDirection());
-		pContext->m_ModelUpDirection = pContext->m_VerticalRotation.ToRotationMatrix().TransformVector(CVector::Up());
+	const float sign = divingFloat ? -1.0f : 1.0f;
+	pContext->m_VerticalRotation = CQuaternion::FromAngleAxis(m_Field068 * sign * 0.01745329238474369, pContext->GetRightDirection())
+		* CQuaternion::FromAngleAxis(-m_Field06C * sign * 0.01745329238474369, pContext->GetFrontDirection());
+	pContext->m_ModelUpDirection = pContext->m_VerticalRotation.ToRotationMatrix().TransformVector(CVector::Up());
 
-		pContext->m_spMatrixNode->m_Transform.SetRotation(pContext->m_VerticalRotation * pContext->m_HorizontalRotation);
-		pContext->m_spMatrixNode->NotifyChanged();
-
-		void* AnimStateBlend_Diving = GetActiveAnimStateBlend(pContext);
-		if (AnimStateBlend_Diving)
-		{
-			FUNCTION_PTR(void, __stdcall, SetAnimBlend, 0x00CDEAB0, void* This, float BlendAmnt);
-			SetAnimBlend(AnimStateBlend_Diving, std::clamp(m_Field06C / DivingRotationMax, -1.0f, 1.0f) + 1.0f);
-		}
-	}
-	else
-	{
-		scalard = -m_Field06C * 0.01745329238474369;
-		CQuaternion v44 = CQuaternion::FromAngleAxis(scalard, pContext->GetFrontDirection());
-		v45 = m_Field068;
-		scalare = v45 * 0.01745329238474369;
-		pContext->m_VerticalRotation = CQuaternion::FromAngleAxis(scalare, pContext->GetRightDirection()) * v44;
-		CMatrix44 rotmat = pContext->m_VerticalRotation.ToRotationMatrix();
-
-		pContext->m_ModelUpDirection = rotmat.TransformVector(CVector::Up());
-
-		pContext->m_spMatrixNode->m_Transform.SetRotation(pContext->m_VerticalRotation * pContext->m_HorizontalRotation);
-		pContext->m_spMatrixNode->NotifyChanged();
-	}
+	pContext->m_spMatrixNode->m_Transform.SetRotation(pContext->m_VerticalRotation* pContext->m_HorizontalRotation);
+	pContext->m_spMatrixNode->NotifyChanged();
 
 #if 0
 	CVector frontDir = pContext->GetFrontDirection();
