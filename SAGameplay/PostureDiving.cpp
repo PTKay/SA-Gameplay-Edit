@@ -274,8 +274,11 @@ void Sonic::Player::CSonicClassicPostureDiving::UpdateState()
 	DiveFuncSetSomeDeltatimeThing(&m_Field068, this, &m_Field070, fuckidk);
 
 	const float sign = divingFloat ? -1.0f : 1.0f;
-	pContext->m_VerticalRotation = CQuaternion::FromAngleAxis(m_Field068 * sign * 0.01745329238474369, pContext->GetRightDirection())
-		* CQuaternion::FromAngleAxis(-m_Field06C * sign * 0.01745329238474369, pContext->GetFrontDirection());
+	const CVector AxisX = divingFloat ? pContext->m_HorizontalRotation.Right() : pContext->GetRightDirection();
+	const CVector AxisZ = divingFloat ? pContext->m_HorizontalRotation.Forward() : pContext->GetFrontDirection();
+
+	pContext->m_VerticalRotation = CQuaternion::FromAngleAxis(m_Field068 * sign * MathUtil::DegreesToRadians, AxisX)
+		* CQuaternion::FromAngleAxis(-m_Field06C * sign * MathUtil::DegreesToRadians, AxisZ);
 	pContext->m_ModelUpDirection = pContext->m_VerticalRotation.ToRotationMatrix().TransformVector(CVector::Up());
 
 	pContext->m_spMatrixNode->m_Transform.SetRotation(pContext->m_VerticalRotation* pContext->m_HorizontalRotation);

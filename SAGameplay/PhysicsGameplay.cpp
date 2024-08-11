@@ -2650,7 +2650,7 @@ namespace Gameplay_Adventure::Extras
 		DebugDrawText::log("CustomInput");
 
 		auto* const context = state->GetContext();
-		if (context->m_Is2DMode || !context->m_Grounded || context->StateFlag(eStateFlag_IgnorePadInput))
+		if (*(uint32_t*)context == idModernContext || context->m_Is2DMode || !context->m_Grounded || context->StateFlag(eStateFlag_IgnorePadInput))
 			return original_Input3DStandardUpdate(state);
 
 		auto* const camera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera().get();
