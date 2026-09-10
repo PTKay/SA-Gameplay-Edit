@@ -34,7 +34,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -216,7 +216,6 @@
     <ClCompile Include="SetEditor.cpp" />
     <ClCompile Include="SetObjectMods.cpp" />
     <ClCompile Include="ProceduralAnimation.cpp" />
-    <ClCompile Include="SetObjectsCustom.cpp" />
     <ClCompile Include="SkyDiving.cpp" />
   </ItemGroup>
   <ItemGroup>

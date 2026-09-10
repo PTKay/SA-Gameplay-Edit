@@ -1,3 +1,4 @@
 [submodule "BlueBlur"]
 	path = BlueBlur
-	url = https://github.com/blueskythlikesclouds/BlueBlur.git
+	url = https://github.com/PTKay/BlueBlur
+	branch = blueblur-sagameplay-edits

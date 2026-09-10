@@ -58,9 +58,6 @@
     <ClCompile Include="SetObjectMods.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="SetObjectsCustom.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="PostureDiving.cpp">
       <Filter>Source</Filter>
     </ClCompile>

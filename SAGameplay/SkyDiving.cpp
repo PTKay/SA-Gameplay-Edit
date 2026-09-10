@@ -14,8 +14,8 @@ HOOK(void, __fastcall, _ClassicAddCallback, 0x00DEA4B0, Sonic::Player::CSonicCla
 	);
 
 	This->m_spAnimationStateMachine->GetAnimationState("SkyDivingStart")->SetTransitionState("SkyDiving");
-	This->m_spAnimationStateMachine->SetBlend("SkyDivingStart", "SkyDiving", 0.2f);
-	This->m_spAnimationStateMachine->SetBlend("SkyDiving", "Fall", 0.3f);
+	This->m_spAnimationStateMachine->SetAnimationBlend("SkyDivingStart", "SkyDiving", 0.2f);
+	This->m_spAnimationStateMachine->SetAnimationBlend("SkyDiving", "Fall", 0.3f);
 }
 
 // Patch dive state parameter indexes

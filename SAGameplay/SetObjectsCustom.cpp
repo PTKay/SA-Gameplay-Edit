@@ -24,7 +24,7 @@ namespace Sonic
 		//-----------------
 
 		BB_OVERRIDE_FUNCTION_PTR(void, CGameObject, DeathCallback, 0xF1DE30, (Sonic::CGameDocument*, in_pGameDocument));
-		BB_OVERRIDE_FUNCTION_PTR(void, CGameObject, CGameObject30, 0xF1E880, (void*, A1));
+		BB_OVERRIDE_FUNCTION_PTR(void, CGameObject, AddParameterBank, 0xF1E880, (void*, A1));
 
 		BB_OVERRIDE_FUNCTION_PTR(void, CObjectBase, SetAddUpdateUnit, 0xF1CD80, (Sonic::CGameDocument*, in_pGameDocument));
 		BB_OVERRIDE_FUNCTION_PTR(bool, CObjectBase, SetAddRenderables, 0xF1E4D0,

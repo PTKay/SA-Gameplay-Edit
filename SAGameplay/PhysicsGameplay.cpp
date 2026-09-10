@@ -2358,7 +2358,7 @@ namespace Gameplay_Adventure::Extras
 			{
 				return context->m_spParameter->Get<float>(Sonic::Player::ePlayerSpeedParameter_JumpPowerOnBoard);
 			}
-			if (context->StateFlag(eStateFlag_OnWaterSeEnabled) && (context->Skills() & 0x400) != 0)
+			if (context->StateFlag(eStateFlag_OnWaterSeEnabled) && (context->m_Skills.test(0x400)) != 0)
 			{
 				return baseJumpPower + context->m_spParameter->Get<float>(Sonic::Player::ePlayerSpeedParameter_JumpPowerAllRounder);
 			}
