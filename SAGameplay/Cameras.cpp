@@ -514,7 +514,7 @@ namespace CustomCameras
 		//This->m_FovInRadians = param_Fovy * DEG2RAD;
 
 		// SA1 FOV at all times for now
-		This->m_FovInRadians = 55.0f * DEG2RAD;
+		//This->m_FovInRadians = 55.0f * DEG2RAD;
 		This->m_Field68 = true;
 
 		camera->m_FieldOfView = This->m_FovInRadians;
@@ -781,7 +781,7 @@ namespace CustomCameras
 		This->m_CameraPositionCollision = cameraPosition;
 
 		// SA1 FOV at all times for now
-		This->m_FovInRadians = 55.0f * DEG2RAD;
+		//This->m_FovInRadians = 55.0f * DEG2RAD;
 		This->m_Field68 = true;
 
 		camera->m_FieldOfView = This->m_FovInRadians;
@@ -921,7 +921,7 @@ namespace CustomCameras
 		}
 
 		// TODO: only do this when "Adventure Mode," currently just checking if Classic Sonic.
-		if (*(int*)context == 0x016D86FC)
+		if (*(int*)context == 0x016D86FC && Config::ms_IsSA1LevelCamera)
 		{
 			switch (Config::ms_CameraType)
 			{
@@ -1049,11 +1049,11 @@ namespace CustomCameras
 		float& param_TargetPitch    = *GetPointer<float>(sonicCameraParams, 0x04 * 3); // Usually 0.0f in official stages, sometimes 15.0f?
 		float& param_TargetYaw      = *GetPointer<float>(sonicCameraParams, 0x04 * 4); // Usually 0.0f
 
-		param_Fovy = 55.0f;
-		param_Distance = 6.0f;
+		//param_Fovy = 45.0f;
+		//param_Distance = 5.0f;
 		//param_VerticalOffset = 0.0f;
-		param_TargetPitch = 0.0f;
-		param_TargetYaw   = 0.0f;
+		//param_TargetPitch = 0.0f;
+		//param_TargetYaw   = 0.0f;
 	}
 
 	HOOK(uint32_t*, __stdcall, _GetCameraController, 0x101A320, Sonic::CGameObject3D* This, uint32_t* a2)

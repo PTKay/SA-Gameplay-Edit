@@ -106,7 +106,7 @@ EXPORT void Init(ModInfo* modInfo)
     ProceduralAnimation::Init();
     SkyDiving::Init();
 
-    //Cameras::Init();
+    Cameras::Init();
 
     //SetObjectMods::Init();
     //SetObjectsCustom::Init();

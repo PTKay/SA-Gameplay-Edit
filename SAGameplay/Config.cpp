@@ -135,9 +135,8 @@ namespace XmlExtensions
 
 		// Initialize to False when loading a level, then override to True if specified in the XML deliberately.
 		// That way, levels that support adventure physics, but want compatibility with vanilla, can just add this property.
-		// HACK: ok set to true just for withermin bby
-		Config::ms_IsSA1LevelPreset = true;
 		properties.AddBool("IsAdventure", &Config::ms_IsSA1LevelPreset);
+		properties.AddBool("IsAdventureCamera", &Config::ms_IsSA1LevelCamera);
 		properties.ApplyParams(xmlData);
 	}
 }

@@ -42,6 +42,7 @@ public:
 	STATIC bool ms_ReduceAirFriction = false;
 
 	STATIC bool ms_IsSA1LevelPreset = false;
+	STATIC bool ms_IsSA1LevelCamera = false;
 
 #undef STATIC
 };
